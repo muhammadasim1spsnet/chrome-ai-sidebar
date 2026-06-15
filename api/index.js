@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 app.post("/chat", async (req, res) => {
   const { messages, pageContent } = req.body;
-  const MODEL_ID = "us.anthropic.claude-opus-4-6-v1";
+  const MODEL_ID = process.env.BEDROCK_MODEL_ID || "anthropic.claude-3-5-sonnet-20241022-v2:0";
 
   try {
     const command = new InvokeModelCommand({

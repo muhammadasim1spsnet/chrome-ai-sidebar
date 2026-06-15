@@ -11,6 +11,11 @@ let isLoading   = false;
 chrome.storage.local.get(['claudeConfig'], r => {
   if (r.claudeConfig) {
     config = { ...config, ...r.claudeConfig };
+    // Migrate stale localhost URL to production
+    if (!config.url || config.url.startsWith('http://localhost')) {
+      config.url = 'https://chrome-ai-sidebar-beta.vercel.app';
+      chrome.storage.local.set({ claudeConfig: config });
+    }
     document.getElementById('cfg-url').value   = config.url;
     document.getElementById('cfg-model').value = config.model;
     updateModelBadge();
@@ -178,7 +183,10 @@ async function send(text) {
       body: JSON.stringify({ messages, pageContent })
     });
 
-    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error || `Server error: ${res.status}`);
+    }
     const data = await res.json();
 
     removeThinking();
