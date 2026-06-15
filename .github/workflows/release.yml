@@ -84,5 +84,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+          vercel env add AWS_ACCESS_KEY_ID production <<< "${{ secrets.AWS_ACCESS_KEY_ID }}" || true
+          vercel env add AWS_SECRET_ACCESS_KEY production <<< "${{ secrets.AWS_SECRET_ACCESS_KEY }}" || true
+          vercel env add AWS_REGION production <<< "us-east-1" || true
           vercel build --prod --token=$VERCEL_TOKEN
           vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
