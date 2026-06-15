@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/backend/api/index" }
+  "routes": [
+    { "src": "/(.*)", "dest": "/backend/api/index.js" }
   ]
 }
