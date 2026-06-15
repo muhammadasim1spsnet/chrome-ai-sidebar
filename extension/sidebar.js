@@ -177,7 +177,7 @@ async function send(text) {
   addMessage('assistant', '', true);
 
   try {
-    const res = await fetch(`${config.url}/chat`, {
+    const res = await fetch(`${config.url.replace(/\/$/, '')}/chat`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages, pageContent })

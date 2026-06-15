@@ -3,7 +3,12 @@ const cors = require("cors");
 const { BedrockRuntimeClient, InvokeModelCommand } = require("@aws-sdk/client-bedrock-runtime");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: (_origin, cb) => cb(null, true),
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
+app.options('*', cors());
 app.use(express.json());
 
 const bedrock = new BedrockRuntimeClient({ region: process.env.AWS_REGION || "us-east-1" });
