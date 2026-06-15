@@ -1,0 +1,6 @@
+backend/node_modules/
+backend/.env
+*.zip
+.playwright-mcp/
+*.png
+*.json.tmp
