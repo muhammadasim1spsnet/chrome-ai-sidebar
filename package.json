@@ -1,0 +1,9 @@
+{
+  "name": "chrome-ai-sidebar-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.0"
+  }
+}
