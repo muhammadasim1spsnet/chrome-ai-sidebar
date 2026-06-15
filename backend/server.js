@@ -41,5 +41,4 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3456;
-app.listen(PORT, () => console.log(`✅ Claude backend running → http://localhost:${PORT}`));
+export default app;

@@ -4,3 +4,5 @@ backend/.env
 .playwright-mcp/
 *.png
 *.json.tmp
+
+.vercel
