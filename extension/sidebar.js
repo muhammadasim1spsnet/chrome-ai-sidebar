@@ -1,6 +1,6 @@
 // ── CONFIG ──────────────────────────────────────────────────────────────────
 let config = {
-  url:   'http://localhost:3456',
+  url:   'https://chrome-ai-sidebar-beta.vercel.app',
   model: 'us.anthropic.claude-opus-4-6-v1'
 };
 let messages    = [];
